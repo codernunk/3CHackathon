@@ -21,7 +21,7 @@ namespace _3CHackathonAcumen.Controllers
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
-                return db.Query<Fact>("select fact_text from factoids").ToList();
+                return db.Query<Fact>("select fact_text from factoids where fact_text like '%" + search +"%'").ToList();
             }
         }
     }
