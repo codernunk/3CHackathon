@@ -1,9 +1,42 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
-
+    <title> 3CHackathon Business Acumen </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="Classes/style.css" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-aria.min.js"></script>
+    <script src="Scripts/angular-material.min.js"></script>
+    <script src="Scripts/angular-messages.min.js"></script>
+    <script src="Scripts/Module/app.js"></script>
+    <script src="Scripts/Controller/LandingPageController.js"></script>
 </head>
-<body>
+<body ng-controller="LandingPageController as vm" ng-cloak>
+    <md-toolbar md-colo>
+        <div class="md-toolbar-tools">
+            <h1 style="text-align:left; font-family:'Comic Sans MS';">
+                <span>Business Acumen</span>
+            </h1>
+            <div style="margin-left:auto; margin-right:auto;">
+                <md-input-container>
+                    <label>Enter search term...</label>
+                    <input type="text" ng-model="vm.search" />
+                </md-input-container>
+                <md-button class="md-icon-button" ng-click="vm.searchFact();">
+                    <md-icon>
+                        <i class="material-icons">search</i>
+                    </md-icon>
+                </md-button>
 
+                <table>
+                    <tr ng-repeat="f in vm.facts">
+                        {{ f }}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </md-toolbar>
 </body>
 </html>
