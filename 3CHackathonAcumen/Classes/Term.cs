@@ -18,6 +18,6 @@ namespace _3CHackathonAcumen.Classes
         public int downvotes { get; set; }
         public int views { get; set; }
         public string additionalDetails { get; set; }
-        public List<Tag> tagList {get; set;}
+        public List<Tag> tagList { get; set; }
     }
 }
