@@ -1,6 +1,6 @@
 ﻿angular
     .module("app")
-    .service("DataService", ["$http", function ($http) {
+    .service("TermService", ["$http", function ($http) {
         var urlBase = "http://localhost:61103/";
 
         return {

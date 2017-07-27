@@ -12,6 +12,7 @@
         vm.search = "";
         vm.facts = null;
         vm.index = 0;
+        vm.termId = "2";
 
         vm.currentFact = null;
 
@@ -38,6 +39,16 @@
                 vm.currentFact = vm.facts[vm.index];
             }
         }
+        function upvote() {
+            return TermService.upvote(vm.termId)
+                .then(function (data) {
+                    vm.term = data;
+                    console.log(data);
+                    return vm.term;
+                });
+
+        }
+    }
 
         vm.nextTerm = function () {
             if (vm.index + 1 < vm.facts.length) {
