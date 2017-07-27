@@ -21,6 +21,9 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-me
 }
 
 .helpful {
-    margin:auto;
-    text-align:center;
+margin:auto;
+width:100%;
+position: absolute;
+bottom:50px;
+text-align:center;
 }

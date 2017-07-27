@@ -12,7 +12,6 @@ using System.Web.Http;
 
 namespace _3CHackathonAcumen.Controllers
 {
-    [Authorize]
     public class TermController : ApiController
     {
 
