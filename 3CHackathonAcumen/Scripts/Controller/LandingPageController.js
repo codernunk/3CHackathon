@@ -10,7 +10,7 @@
     function LandingPageController(DataService, TermService) {
         var vm = this;
         vm.search = "";
-        vm.termId = "";
+        vm.termId = "2";
 
         vm.upvote = upvote;
         vm.searchFact = searchFact;
@@ -27,7 +27,7 @@
         }
 
         function upvote() {
-            return TermService.getFacts(vm.termId)
+            return TermService.upvote(vm.termId)
                 .then(function (data) {
                     vm.term = data;
                     console.log(data);
