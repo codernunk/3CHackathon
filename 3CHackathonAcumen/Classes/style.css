@@ -14,3 +14,13 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-me
 .logo-text{
    color:black;
 }
+
+.flashCard {
+    margin:auto;
+    text-align:center;
+}
+
+.helpful {
+    margin:auto;
+    text-align:center;
+}
