@@ -23,9 +23,9 @@
             <div style="margin-left:auto; margin-right:auto;">
                 <md-input-container>
                     <label>Enter search term...</label>
-                    <input type="text" ng-model="vm.search" />
+                    <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" />
                 </md-input-container>
-                <md-button class="md-icon-button" ng-click="vm.searchFact();">
+                <md-button class="md-icon-button" ng-click="vm.searchTerm();">
                     <md-icon>
                         <i class="material-icons">search</i>
                     </md-icon>
@@ -33,25 +33,71 @@
             </div>
         </div>
     </md-toolbar>
-    <div class="flashCard">
-        <p>
-            fact is here.
-        </p>
-        <md-button class="md-icon-button">
-            <md-icon>
-                <i class="material-icons">keyboard_arrow_up</i>
-            </md-icon>
-        </md-button>
-        <md-button class="md-icon-button">
-            <md-icon>
-                <i class="material-icons">keyboard_arrow_down</i>
-            </md-icon>
-        </md-button>
-        <p>
-            What does this mean to
-        </p>
+
+    <div style="height:80%">
+        <div ng-show="vm.facts === null">
+            Search for flashcards
+        </div>
+        <div ng-show="vm.facts.length === 0">
+            No data
+        </div>
+
+        <div ng-show="vm.facts.length > 0" class="center-screen">
+            <table>
+                <tr>
+                    <td style="width:10%">
+                        <md-raised-button class="navigation-btn" ng-class="{'not-enabled': vm.index === 0}" ng-click="vm.previousTerm()">
+                            <md-icon>
+                                <i class="material-icons">navigate_before</i>
+                            </md-icon>
+                        </md-raised-button>
+                    </td>
+                    <td style="width:80%">
+                        <div>
+                            <md-card class="flashCard">
+                                <h2>
+                                    {{vm.currentFact.term_name}}
+                                </h2>
+                                <p>
+                                    {{vm.currentFact.definition}}
+                                </p>
+                                <div>
+                                    <md-button class="md-icon-button inline-button">
+                                        <md-icon>
+                                            <i class="material-icons">thumb_up</i>
+                                        </md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button inline-button">
+                                        <md-icon>
+                                            <i class="material-icons">thumb_down</i>
+                                        </md-icon>
+                                    </md-button>
+                                </div>
+
+                                <!--<p>
+                                What does this mean to
+                            </p>-->
+                                <div>
+                                    <span class="inline-tag" ng-repeat="t in vm.currentFact.tags">{{t.tag_name}}</span>
+                                </div>
+                            </md-card>
+                        </div>
+                    </td>
+                    <td style="width:10%">
+                        <md-raised-button class="navigation-btn" ng-click="vm.nextTerm()">
+                            <md-icon>
+                                <i class="material-icons">navigate_next</i>
+                            </md-icon>
+                        </md-raised-button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="md-whiteframe-1dp helpful">
+    
+
+
+    <!--<div class="md-whiteframe-1dp helpful">
         <span>Was this helpful?</span>
         <md-button class="md-icon-button">
             <md-icon>
@@ -63,6 +109,6 @@
                 <i class="material-icons">thumb_down</i>
             </md-icon>
         </md-button>
-    </div>
+    </div>-->
 </body>
 </html>

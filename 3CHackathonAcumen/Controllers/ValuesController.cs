@@ -53,6 +53,7 @@ namespace _3CHackathonAcumen.Controllers
                     } else {
                         terms[terms.Count - 1].tags.Add(new Tag() { tag_id = -1, tag_name = d.tag_name, tag_type = 1, relevance = d.relevance });
                     }
+                    lastId = d.term_id;
                 }
 
                 return terms;

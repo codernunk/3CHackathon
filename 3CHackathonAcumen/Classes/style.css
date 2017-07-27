@@ -19,11 +19,45 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-me
     width:50%;
     margin:auto;
     text-align:center;
-    border: 2px solid lightgray;
-    box-shadow: 2px 2px 5px lightgray;
+    /*border: 2px solid lightgray;
+    box-shadow: 2px 2px 5px lightgray;*/
 }
 
 .helpful {
-    margin:auto;
-    text-align:center;
+margin:auto;
+width:100%;
+position: absolute;
+bottom:50px;
+text-align:center;
+}
+
+.inline-tag {
+    display:inline-block;
+    position:relative;
+    color: gray;
+    background-color: lightgray;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 3px;
+}
+
+.inline-button {
+    display:inline-block;
+    position:relative;
+}
+
+.center-screen {
+    position: fixed;
+    top: 30%;
+}
+
+.navigation-btn {
+    margin: 30%;
+    background-color: lightgray;
+    cursor:pointer;
+
+}
+
+.navigation-btn.not-enabled {
+    background-color: rgba(215,215,215,100);
 }
