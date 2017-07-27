@@ -6,43 +6,23 @@ using System.Net.Http;
 using System.Web.Http;
 using Dapper;
 using _3CHackathonAcumen.Classes;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace _3CHackathonAcumen.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         [HttpGet]
-        [Route]
-        public List<Fact> getFacts()
+        [Route("api/values/searchTerm")]
+        public List<Fact> getFacts(string search)
         {
-
-        }
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
+            {
+                return db.Query<Fact>("select fact_text from factoids").ToList();
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace _3CHackathonAcumen.Classes
 {
     public class Fact
     {
-        public string description { get; set; }
+        public string fact_text { get; set; }
 
     }
 }
