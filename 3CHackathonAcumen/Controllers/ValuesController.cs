@@ -17,7 +17,7 @@ namespace _3CHackathonAcumen.Controllers
 
         [HttpGet]
         [Route("api/values/searchTerm")]
-        public List<Fact> getFacts(string search)
+        public List<Fact> getFacts(string search=null)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {

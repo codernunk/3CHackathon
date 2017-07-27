@@ -15,6 +15,12 @@ namespace _3CHackathonAcumen
 
             routes.MapRoute(
                 name: "Default",
+                url: "{*anything}",
+                defaults: new { controller = "Home", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "DefaultApi_",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );

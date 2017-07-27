@@ -4,6 +4,13 @@
     display: none !important;
 }
 
-.searchToolbar {
-    color: white;
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+   background-color: transparent;
+}
+md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-menu-toolbar) md-icon {
+    color:rgba(0,0,0,0.54);
+}
+
+.logo-text{
+   color:black;
 }

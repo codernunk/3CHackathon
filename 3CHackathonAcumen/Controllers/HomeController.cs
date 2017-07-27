@@ -10,9 +10,7 @@ namespace _3CHackathonAcumen.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return Redirect(Url.Content("~/index.html"));
         }
     }
 }
