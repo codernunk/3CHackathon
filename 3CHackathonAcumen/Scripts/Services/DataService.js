@@ -34,5 +34,19 @@
             }
         }
 
+        function getTerms(search) {
+            return $http.get(urlBase + "api/values/searchTerms/", { params: { search: search } })
+                .then(getFactsComplete)
+                .catch(getFactsFailed);
+
+            function getFactsComplete(response) {
+                return response.data;
+            }
+
+            function getFactsFailed(error) {
+                return console.log("XHR failed" + error.data.message);
+            }
+        }
+
 
     }]);

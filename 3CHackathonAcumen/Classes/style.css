@@ -16,8 +16,11 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-me
 }
 
 .flashCard {
+    width:50%;
     margin:auto;
     text-align:center;
+    border: 2px solid lightgray;
+    box-shadow: 2px 2px 5px lightgray;
 }
 
 .helpful {
