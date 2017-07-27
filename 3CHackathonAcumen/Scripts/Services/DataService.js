@@ -20,4 +20,19 @@
                 return console.log("XHR failed" + error.data.message);
             }
         }
+        function getRandomQuestion() {
+            return $http.get(urlBase + "api/values/question/")
+                .then(getRandomQuestionComplete)
+                .catch(getRandomQuestionFailed);
+
+            function getRandomQuestionComplete(response) {
+                return response.data;
+            }
+
+            function getRandomQuestionsFailed(error) {
+                return console.log("XHR failed" + error.data.message);
+            }
+        }
+
+
     }]);
