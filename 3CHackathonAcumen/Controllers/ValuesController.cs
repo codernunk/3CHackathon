@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Dapper;
+using _3CHackathonAcumen.Classes;
 
 namespace _3CHackathonAcumen.Controllers
 {
@@ -17,6 +18,12 @@ namespace _3CHackathonAcumen.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        [HttpGet]
+        [Route]
+        public List<Fact> getFacts()
+        {
+
+        }
         // GET api/values/5
         public string Get(int id)
         {

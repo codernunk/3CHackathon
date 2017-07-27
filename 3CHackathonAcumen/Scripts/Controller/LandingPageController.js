@@ -4,8 +4,10 @@
     angular
         .module("app")
         .controller("LandingPageController", LandingPageController);
+ 
+    LandingPageController.$inject = ["DataService"];
 
-    function LandingPageController() {
+    function LandingPageController(DataService) {
         var vm = this;
         vm.search = "";
         vm.facts = "";
