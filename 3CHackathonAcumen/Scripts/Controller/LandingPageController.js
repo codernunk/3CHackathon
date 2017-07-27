@@ -48,7 +48,6 @@
                 });
 
         }
-    }
 
         vm.nextTerm = function () {
             if (vm.index + 1 < vm.facts.length) {
