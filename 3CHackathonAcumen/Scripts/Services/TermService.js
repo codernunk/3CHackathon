@@ -7,7 +7,8 @@
             upvote: upvote,
             downvote: downvote,
             addView: addView,
-            submitterm: submitterm
+            submitterm: submitterm,
+            getQuestion: getQuestion
         };
 
         function upvote(termId) {
@@ -48,7 +49,22 @@
             function addViewFailed(error) {
                 return console.log("XHR failed" + error.data.message);
             }
-        }//submitterm
+        }
+
+        function getQuestion() {
+            //return "A person or group of people responsible for investing a mutual, exchange-traded or closed-end fund's assets, implementing its investment strategy and managing day-to-day portfolio trading."
+            return $http.get(urlBase + "api/values/getQ/")
+                    .then(getQuestionComplete)
+                    .catch(getQuestionFailed);
+
+            function getQuestionComplete(response) {
+                return response.data;
+            }
+
+            function getQuestionFailed(error) {
+                return console.log("XHR failed" + error.data.message);
+            }
+        }
         function submitterm(question, definition, department) {
             return $http.get(urlBase + "api/values/submitterm/", { params: { question: question, definition: definition, department: department } })
                 .then(addViewComplete)

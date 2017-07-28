@@ -17,10 +17,14 @@
         vm.selectedDepartment = null;
 
         vm.quiz = quiz;
+        vm.term = ""
         vm.question = "";
         vm.definition = "";
         vm.submitTerm = submitTerm;
         vm.cancel = cancel;
+        vm.getQuestion = "";
+
+        getQ();
 
         vm.searchTerm = function () {
             vm.index = 0;
@@ -90,7 +94,7 @@
         }
 
         vm.submitTermComplete = function (ev) {
-            return TermService.submitterm(vm.question, vm.definition, vm.selectedDepartment)
+            return TermService.submitterm(vm.term, vm.definition, vm.selectedDepartment)
             .then(function (data) {
                 alert("submitted");
             });
@@ -117,6 +121,15 @@
                 targetEvent: ev,
                 clickOutsideToClose: true
             });
+        }
+
+        function getQ() {
+            return TermService.getQuestion()
+                   .then(function (data) {
+                       vm.question = data[0].question;
+                       console.log(data);
+                       return vm.question;
+                   });
         }
     }
 })();

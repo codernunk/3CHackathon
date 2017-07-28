@@ -20,6 +20,7 @@ namespace _3CHackathonAcumen.Classes
         public string additional_details { get; set; }
         public int? up_tf { get; set; }
         public List<Tag> tags { get; set; }
+        public string question { get; set; }
 
         public Term() {
             tags = new List<Tag>();

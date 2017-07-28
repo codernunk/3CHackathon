@@ -3,9 +3,9 @@
         <div class="quizDialog md-whiteframe-z1" layout="column">
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <h2>Quiz</h2>
+                    <h2 style="color:blue">Quiz</h2>
                     <span flex></span>
-                    <md-button class="md-icon-button" ng-click="">
+                    <md-button class="md-icon-button" ng-click="vm.cancel()">
                         <md-icon>
                             <i class="material-icons">close</i>
                         </md-icon>
@@ -14,27 +14,20 @@
             </md-toolbar>
             <md-dialog-content>
                 <md-content class="md-padding" layout="column">
-                    
+                    <p>{{ vm.question }}</p>
+                    <md-radio-group ng-model="data.group1">
+                        <md-radio-button value="Investor" class="md-accent md-raised">Investor</md-radio-button>
+                        <md-radio-button value="Portfolio Manager" class="md-accent md-raised"> Portfolio Manager </md-radio-button>
+                        <md-radio-button value="Trader" class="md-accent md-raised">Trader</md-radio-button>
+                        <md-radio-button value="Developer" class="md-accent md-raised">Developer</md-radio-button>
+                    </md-radio-group>
                 </md-content>
             </md-dialog-content>
-            <div class="demo-md-panel-content">
-            <b>Put a question Here</b>
-             </div>
-                <md-radio-group ng-model="data.group1">
-
-                    <md-radio-button value="Apple" class="md-accent md-raised">Apple</md-radio-button>
-                    <md-radio-button value="Banana" class="md-accent md-raised"> Banana </md-radio-button>
-                    <md-radio-button value="Mango" class="md-accent md-raised">Mango</md-radio-button>
-
-                </md-radio-group>
                 <md-dialog-actions layout="row">
                     <md-button ng-click="" class="md-primary md-raised">
-                        Quiz
+                        Submit
                     </md-button>
                     <span flex></span>
-                    <md-button ng-click="">
-
-                    </md-button>
                 </md-dialog-actions>
             </div>
     </form>
