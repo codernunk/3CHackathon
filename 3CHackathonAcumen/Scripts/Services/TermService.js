@@ -51,6 +51,17 @@
         }
 
         function getQuestion() {
-            return "A person or group of people responsible for investing a mutual, exchange-traded or closed-end fund's assets, implementing its investment strategy and managing day-to-day portfolio trading."
+            //return "A person or group of people responsible for investing a mutual, exchange-traded or closed-end fund's assets, implementing its investment strategy and managing day-to-day portfolio trading."
+            return $http.get(urlBase + "api/values/getQ/")
+                    .then(getQuestionComplete)
+                    .catch(getQuestionFailed);
+
+            function getQuestionComplete(response) {
+                return response.data;
+            }
+
+            function getQuestionFailed(error) {
+                return console.log("XHR failed" + error.data.message);
+            }
         }
     }]);

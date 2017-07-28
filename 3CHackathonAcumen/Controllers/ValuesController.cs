@@ -26,13 +26,13 @@ namespace _3CHackathonAcumen.Controllers
         //}
 
         [HttpGet]
-        [Route("api/values/getQ")]
-        public string getRandomQuestion()
+        [Route("api/values/getQ/")]
+        public List<Term> getRandomQuestion()
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
                 //get a random question from a database
-                return db.Query("SELECT TOP 1 question FROM questions ORDER BY NEWID()").ToString();
+                return db.Query<Term>("SELECT TOP 1 question FROM questions ORDER BY NEWID()").ToList();
             }
         }
 

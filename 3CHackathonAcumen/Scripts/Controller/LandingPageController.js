@@ -19,9 +19,8 @@
         vm.submitTerm = submitTerm;
         vm.cancel = cancel;
         vm.getQuestion = "";
-        vm.getQ = getQ;
-        vm.getQ();
 
+        getQ();
 
         vm.searchTerm = function () {
             vm.index = 0;
@@ -110,10 +109,12 @@
         }
 
         function getQ() {
-            vm.getQuestion = TermService.getQuestion();
-            console.log(vm.getQuestion);
-            return vm.getQuestion;
-
+            return TermService.getQuestion()
+                   .then(function (data) {
+                       vm.question = data[0].question;
+                       console.log(data);
+                       return vm.question;
+                   });
         }
     }
 })();

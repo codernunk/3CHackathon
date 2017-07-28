@@ -5,7 +5,7 @@
                 <div class="md-toolbar-tools">
                     <h2 style="color:blue">Quiz</h2>
                     <span flex></span>
-                    <md-button class="md-icon-button" ng-click="">
+                    <md-button class="md-icon-button" ng-click="vm.cancel()">
                         <md-icon>
                             <i class="material-icons">close</i>
                         </md-icon>
@@ -14,27 +14,20 @@
             </md-toolbar>
             <md-dialog-content>
                 <md-content class="md-padding" layout="column">
-                    <p>{{ vm.getQuestion }}</p>
+                    <p>{{ vm.question }}</p>
                     <md-radio-group ng-model="data.group1">
-
                         <md-radio-button value="Investor" class="md-accent md-raised">Investor</md-radio-button>
                         <md-radio-button value="Portfolio Manager" class="md-accent md-raised"> Portfolio Manager </md-radio-button>
                         <md-radio-button value="Trader" class="md-accent md-raised">Trader</md-radio-button>
                         <md-radio-button value="Developer" class="md-accent md-raised">Developer</md-radio-button>
-
                     </md-radio-group>
                 </md-content>
             </md-dialog-content>
- 
-               
                 <md-dialog-actions layout="row">
                     <md-button ng-click="" class="md-primary md-raised">
-                        Quiz
+                        Submit
                     </md-button>
                     <span flex></span>
-                    <md-button ng-click="">
-
-                    </md-button>
                 </md-dialog-actions>
             </div>
     </form>
