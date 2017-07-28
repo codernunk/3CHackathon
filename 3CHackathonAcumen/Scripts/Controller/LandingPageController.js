@@ -13,6 +13,9 @@
         vm.facts = null;
         vm.index = 0;
         vm.currentFact = null;
+        vm.departments = [];
+        vm.selectedDepartment = null;
+
         vm.quiz = quiz;
         vm.question = "";
         vm.definition = "";
@@ -29,9 +32,13 @@
 
                     if (vm.facts !== null || vm.facts.length > 0) {
                         vm.currentFact = vm.facts[0];
-                    }
-                    
+                    }                    
                     return vm.facts;
+                });
+            DataService.getDepartments()
+                .then(function (d) {
+                    vm.departments = d;
+                    return 1;
                 });
         }
 
@@ -80,6 +87,13 @@
                 vm.index++;
                 vm.currentFact = vm.facts[vm.index];
             }
+        }
+
+        vm.submitTermComplete = function (ev) {
+            return TermService.submitterm(vm.question, vm.definition, vm.selectedDepartment)
+            .then(function (data) {
+                alert("submitted");
+            });
         }
 
         function cancel() {
