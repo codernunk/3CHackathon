@@ -46,7 +46,7 @@
                 <div style="margin-left:auto; margin-right:auto;">
                     <md-input-container>
                         <label>Enter search term...</label>
-                        <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" />
+                        <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" style="color:white" />
                     </md-input-container>
                     <md-button class="md-icon-button" ng-click="vm.searchTerm();">
                         <md-icon>
@@ -55,12 +55,12 @@
                     </md-button>
                 </div>
                 <div>
-                    <md-button class="md-primary" ng-click="vm.submitTerm($event)">
+                    <md-button class="md-raised" ng-click="vm.submitTerm($event)">
                         Submit Term
                     </md-button>
                 </div>
                 <div>
-                    <md-button class="md-primary" ng-click="vm.quiz($event)">
+                    <md-button class="md-raised" ng-click="vm.quiz($event)">
                         Quiz Me!
                     </md-button>
                 </div>

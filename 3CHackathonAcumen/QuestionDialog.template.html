@@ -3,7 +3,7 @@
         <div class="termDialog md-whiteframe-z1" layout="column">
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <h2 style="color:blue">Question</h2>
+                    <h2 style="color:white">Question</h2>
                     <span flex></span>
                     <md-button class="md-icon-button" ng-click="vm.cancel()">
                         <md-icon>
@@ -16,19 +16,19 @@
                 <md-content class="md-padding" layout="column">
                     <md-input-container>
                         <label>
-                            Term
+                            Department
                         </label>
                         <md-select ng-model="vm.selectedDepartment">
-                            <md-option>
+                            <md-option value="GIS">
                                 GIS
                             </md-option>
-                            <md-option>
+                            <md-option value="FFS">
                                 FFS
                             </md-option>
-                            <md-option>
+                            <md-option value="CTO">
                                 CTO
                             </md-option>
-                            <md-option>
+                            <md-option value="RETAIL">
                                 RETAIL
                             </md-option>
                         </md-select>
