@@ -1,0 +1,4 @@
+﻿Use these instead of thumbs up and down? Matches the icons for stocks (green up, red down)
+
+▲
+▼

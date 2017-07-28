@@ -258,6 +258,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\acct_icon.png" />
+    <Content Include="Assets\adv_search_icon.png" />
+    <Content Include="Assets\carousel_icon_left.png" />
+    <Content Include="Assets\carousel_icon_left_shadowed.png" />
+    <Content Include="Assets\carousel_icon_right.png" />
+    <Content Include="Assets\carousel_icon_right_shadowed.png" />
+    <Content Include="Assets\landing_page_bkgd.png" />
+    <Content Include="Assets\logo.png" />
+    <Content Include="Assets\mainpage_bkgd.png" />
+    <Content Include="Assets\mainpage_bkgd_with_logo.png" />
+    <Content Include="Assets\mainpage_logo.png" />
+    <Content Include="Assets\notused_vg_logo.png" />
+    <Content Include="Assets\searchbar.html" />
+    <Content Include="Assets\search_icon.png" />
+    <Content Include="Assets\symbols_for_up_down.txt" />
     <Content Include="Classes\style.css" />
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />

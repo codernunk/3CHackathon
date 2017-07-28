@@ -15,22 +15,17 @@
     <script src="Scripts/Services/DataService.js"></script>
     <script src="Scripts/Services/TermService.js"></script>
 </head>
-<body ng-controller="LandingPageController as vm" ng-cloak>
+<body ng-controller="LandingPageController as vm" ng-cloak ng-class="{'bgg': vm.facts === null}">
     <!-- Initial Div -->
-    <div ng-show="vm.facts === null" style="height:100%; width:100%;  position: fixed; margin: 0;text-align: center;top: 30%;">
-        <md-content flex layout-padding>
-            <h1>
-                <span style="color: black;">Expert</span>
-            </h1>
+    <div ng-show="vm.facts === null" style="height:100%; width:100%;  position: fixed; margin: 0;text-align: center;top: 55%; background-color: transparent">
+        <md-content flex layout-padding style="background-color: transparent">
             <div style="margin-left:auto; margin-right:auto;">
-                <md-input-container>
-                    <label>Enter search term...</label>
-                    <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" class="search"/>
+                <md-input-container style="left: 20px; height:71px">
+                    <label>What do you want to learn?</label>
+                    <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" class="search" style="background-color: white; height:71px"/>
                 </md-input-container>
-                <md-button class="md-icon-button" ng-click="vm.searchTerm();">
-                    <md-icon>
-                        <i class="material-icons">search</i>
-                    </md-icon>
+                <md-button style="background: url('Assets/search_icon.png'); width: 71px; height: 71px;" ng-click="vm.searchTerm();">
+
                 </md-button>
             </div>
         </md-content>
@@ -67,11 +62,7 @@
             </div>
         </md-toolbar>
 
-        <div style="height:90%">
-            <div ng-show="vm.facts.length === 0">
-                No data
-            </div>
-
+        <div style="height:90%;">
             <div ng-repeat="f in vm.facts" ng-show="vm.facts.length > 0 && vm.currentFact == f" class="center-screen" style="width:100%">
                 <table style="width:100%">
                     <tr>

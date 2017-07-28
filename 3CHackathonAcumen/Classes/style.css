@@ -39,6 +39,14 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     -ms-user-select: text; /* Internet Explorer/Edge */
     user-select: text; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+
+background-color: rgb(202, 102, 108);
+color: white;
+box-shadow: 5px 5px 5px lightgray;
+}
+
+.bgg {
+    background: url('/Assets/landing_page_bkgd.png') no-repeat rgba(255,255,255,200);
 }
 
 .helpful {
@@ -105,7 +113,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 .search {
     border: 1px solid lightgray;
-    box-shadow: 0px 4px 8px lightgrey;
+
 }
 
 
