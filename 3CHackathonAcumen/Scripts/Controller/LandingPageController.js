@@ -13,6 +13,7 @@
         vm.facts = null;
         vm.index = 0;
         vm.currentFact = null;
+        vm.quiz = quiz;
 
         vm.searchTerm = function () {
             vm.index = 0;
@@ -76,7 +77,8 @@
                 vm.currentFact = vm.facts[vm.index];
             }
         }
-
-
+        function quiz(ev) {
+            return showDialog("QuizDialog.template.html", ev);
+        }
     }
 })();
