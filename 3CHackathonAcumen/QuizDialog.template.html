@@ -17,15 +17,25 @@
                     
                 </md-content>
             </md-dialog-content>
-            <md-dialog-actions layout="row">
-                <md-button ng-click="" class="md-primary md-raised">
-                    Quiz
-                </md-button>
-                <span flex></span>
-                <md-button ng-click="">
-                    
-                </md-button>
-            </md-dialog-actions>
-        </div>
+            <div class="demo-md-panel-content">
+            <b>Put a question Here</b>
+             </div>
+                <md-radio-group ng-model="data.group1">
+
+                    <md-radio-button value="Apple" class="md-accent md-raised">Apple</md-radio-button>
+                    <md-radio-button value="Banana" class="md-accent md-raised"> Banana </md-radio-button>
+                    <md-radio-button value="Mango" class="md-accent md-raised">Mango</md-radio-button>
+
+                </md-radio-group>
+                <md-dialog-actions layout="row">
+                    <md-button ng-click="" class="md-primary md-raised">
+                        Quiz
+                    </md-button>
+                    <span flex></span>
+                    <md-button ng-click="">
+
+                    </md-button>
+                </md-dialog-actions>
+            </div>
     </form>
 </md-dialog>
