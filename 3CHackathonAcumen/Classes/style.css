@@ -1,39 +1,56 @@
 ﻿body {
+        -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
 
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
-   background-color: transparent;
-}
-md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-menu-toolbar) md-icon {
-    color:rgba(0,0,0,0.54);
+    background-color: transparent;
 }
 
-.logo-text{
-   color:black;
+    md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-menu-toolbar) md-icon {
+        color: rgba(0,0,0,0.54);
+    }
+
+.logo-text {
+    color: black;
 }
 
 .flashCard {
-    width:50%;
-    margin:auto;
-    text-align:center;
+    width: 100%;
+    margin: auto;
+    text-align: center;
     /*border: 2px solid lightgray;
     box-shadow: 2px 2px 5px lightgray;*/
+        -webkit-touch-callout: text; /* iOS Safari */
+    -webkit-user-select: text; /* Safari */
+    -khtml-user-select: text; /* Konqueror HTML */
+    -moz-user-select: text; /* Firefox */
+    -ms-user-select: text; /* Internet Explorer/Edge */
+    user-select: text; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 .helpful {
-margin:auto;
-width:100%;
-position: absolute;
-bottom:50px;
-text-align:center;
+    margin: auto;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    height: 50px;
 }
 
 .inline-tag {
-    display:inline-block;
-    position:relative;
+    display: inline-block;
+    position: relative;
     color: gray;
     background-color: lightgray;
     padding: 4px;
@@ -42,8 +59,8 @@ text-align:center;
 }
 
 .inline-button {
-    display:inline-block;
-    position:relative;
+    display: inline-block;
+    position: relative;
 }
 
 .center-screen {
@@ -52,12 +69,101 @@ text-align:center;
 }
 
 .navigation-btn {
-    margin: 30%;
+    margin: 10px;
     background-color: lightgray;
-    cursor:pointer;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
 
 }
 
-.navigation-btn.not-enabled {
-    background-color: rgba(215,215,215,100);
+.bold {
+    font-weight: bolder;
+    margin: 20px;
+}
+
+.vote-btn {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.md-button.md-default-theme.md-fab, .md-button.md-fab.vote-btn {
+    background-color:gray;
+}
+
+.md-button.md-default-theme.md-fab, .md-button.md-fab.vote-btn.upvote {
+    background-color:green;
+}
+
+.md-button.md-default-theme.md-fab, .md-button.md-fab.vote-btn.downvote {
+    background-color:red;
+
+}
+
+.search {
+    border: 1px solid lightgray;
+    box-shadow: 0px 4px 8px lightgrey;
+}
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes out {
+    0%   {left:0px; top:0px; filter:blur(5px);}
+    100% {left:-1000px; top:0px; filter:blur(5px);}
+}
+
+/* Standard syntax */
+@keyframes out {
+    0%   {left:0px; top:0px; filter:blur(5px);}
+    100% {left:-1000px; top:0px; filter:blur(5px);}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes in {
+    0%   {left:1000px; top:0px; filter:blur(5px);}
+    100% {left:0px; top:0px; filter:blur(5px);}
+}
+
+/* Standard syntax */
+@keyframes in {
+    0%   {left:1000px; top:0px; filter:blur(5px);}
+    100% {left:0px; top:0px; filter:blur(5px);}
+}
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes in-screen {
+    0%   {left:0px; top:1000px;}
+    100% {left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes in-screen {
+    0%   {left:0px; top:1000px;}
+    100% {left:0px; top:0px;}
+}
+
+.anim-card-out {
+    -webkit-animation-name: out; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.25s; /* Safari 4.0 - 8.0 */
+    animation-name: out;
+    animation-duration: 0.25s;
+    position: relative;
+}
+
+.anim-card-in {
+    -webkit-animation-name: in; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.25s; /* Safari 4.0 - 8.0 */
+    animation-name: in;
+    animation-duration: 0.25s;
+    position: relative;
+}
+
+.anim-screen-in {
+    -webkit-animation-name: in-screen; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .25s; /* Safari 4.0 - 8.0 */
+    animation-name: in-screen;
+    animation-duration: .25s;
+    position: relative;
 }

@@ -39,10 +39,10 @@ namespace _3CHackathonAcumen.Controllers
 
         [HttpGet]
         [Route("api/values/searchTerms")]
-        public List<Term> SearchTerms(string search = null) {
+        public List<Term> SearchTerms(string search = null, int userId = 1) {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString)) {
                 // Get data
-                List<TermTagResult> data = db.Query<TermTagResult>(string.Format("EXEC [SEL_TERMS_IMPLICIT] '{0}'", search)).ToList();
+                List<TermTagResult> data = db.Query<TermTagResult>(string.Format("EXEC [SEL_TERMS_IMPLICIT] '{0}', {1}", search, userId.ToString())).ToList();
 
                 List<Term> terms = new List<Term>();
                 int lastId = -1;

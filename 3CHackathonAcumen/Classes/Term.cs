@@ -18,6 +18,7 @@ namespace _3CHackathonAcumen.Classes
         public int downvotes { get; set; }
         public int views { get; set; }
         public string additional_details { get; set; }
+        public int? up_tf { get; set; }
         public List<Tag> tags { get; set; }
 
         public Term() {
@@ -39,6 +40,7 @@ namespace _3CHackathonAcumen.Classes
         public string additional_details { get; set; }
         public string tag_name { get; set; }
         public int relevance { get; set; }
+        public int? up_tf { get; set; }
 
         public Term ToTerm() {
             Term t = new Classes.Term();
@@ -54,6 +56,7 @@ namespace _3CHackathonAcumen.Classes
             t.downvotes = downvotes;
             t.views = views;
             t.additional_details = additional_details;
+            t.up_tf = up_tf;
 
             t.tags.Add(new Tag() { tag_id = -1, tag_name = this.tag_name, tag_type = 1, relevance = this.relevance });
 

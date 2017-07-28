@@ -17,23 +17,23 @@ namespace _3CHackathonAcumen.Controllers
 
         [HttpGet]
         [Route("api/values/upvote")]
-        public List<Term> upvote(int termId)
+        public int upvote(int termId, int userId = 1)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
                 //vulnerable to sql injection :) 
-                return db.Query<Term>("update terms set upvotes = upvotes + 1 where term_id =" + termId).ToList();
+                return db.Execute(string.Format("EXEC upvote {0}, {1}", termId, userId));
             }
         }
 
         [HttpGet]
         [Route("api/values/downvote")]
-        public List<Term> downvote(int termId)
+        public int downvote(int termId, string feedback, int userId = 1)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
                 //vulnerable to sql injection :) 
-                return db.Query<Term>("update terms set views = views + 1 where term_id =" + termId).ToList();
+                return db.Execute(string.Format("EXEC downvote {0}, {1}, '{2}'", termId, userId, feedback.Replace("'","''")));
             }
         }
 

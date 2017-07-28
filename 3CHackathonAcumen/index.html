@@ -13,17 +13,19 @@
     <script src="Scripts/Module/app.js"></script>
     <script src="Scripts/Controller/LandingPageController.js"></script>
     <script src="Scripts/Services/DataService.js"></script>
+    <script src="Scripts/Services/TermService.js"></script>
 </head>
 <body ng-controller="LandingPageController as vm" ng-cloak>
-    <md-toolbar>
-        <div class="md-toolbar-tools md-whiteframe-1dp">
+    <!-- Initial Div -->
+    <div ng-show="vm.facts === null" style="height:100%; width:100%;  position: fixed; margin: 0;text-align: center;top: 30%;">
+        <md-content flex layout-padding>
             <h1>
                 <span class="logo-text">Business Acumen</span>
             </h1>
             <div style="margin-left:auto; margin-right:auto;">
                 <md-input-container>
                     <label>Enter search term...</label>
-                    <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" />
+                    <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" class="search"/>
                 </md-input-container>
                 <md-button class="md-icon-button" ng-click="vm.searchTerm();">
                     <md-icon>
@@ -31,74 +33,105 @@
                     </md-icon>
                 </md-button>
             </div>
-        </div>
-    </md-toolbar>
+        </md-content>
+    </div>
 
-    <div style="height:80%">
-        <div ng-show="vm.facts === null">
-            Search for flashcards
-        </div>
-        <div ng-show="vm.facts.length === 0">
-            No data
-        </div>
+    <!-- Div that represents data was searched before -->
+    <div ng-show="vm.facts !== null" ng-class="{'anim-screen-in': vm.facts !== null}">
+        <md-toolbar>
+            <div class="md-toolbar-tools md-whiteframe-1dp">
+                <h1>
+                    <span class="logo-text">Business Acumen</span>
+                </h1>
+                <div style="margin-left:auto; margin-right:auto;">
+                    <md-input-container>
+                        <label>Enter search term...</label>
+                        <input type="text" ng-model="vm.search" ng-keyup="$event.keyCode == 13 && vm.searchTerm()" />
+                    </md-input-container>
+                    <md-button class="md-icon-button" ng-click="vm.searchTerm();">
+                        <md-icon>
+                            <i class="material-icons">search</i>
+                        </md-icon>
+                    </md-button>
+                </div>
+                <div>
+                    <md-button class="md-primary">
+                        Submit Question
+                    </md-button>
+                    <md-button class="md-primary">
+                        Quiz Me!
+                    </md-button>
+                </div>
+            </div>
+        </md-toolbar>
 
-        <div ng-show="vm.facts.length > 0" class="center-screen">
-            <table>
-                <tr>
-                    <td style="width:10%">
-                        <md-raised-button class="navigation-btn" ng-class="{'not-enabled': vm.index === 0}" ng-click="vm.previousTerm()">
-                            <md-icon>
-                                <i class="material-icons">navigate_before</i>
-                            </md-icon>
-                        </md-raised-button>
-                    </td>
-                    <td style="width:80%">
-                        <div>
-                            <md-card class="flashCard">
-                                <h2>
-                                    {{vm.currentFact.term_name}}
-                                </h2>
-                                <p>
-                                    {{vm.currentFact.definition}}
-                                </p>
-                                <div>
-                                    <md-button class="md-icon-button inline-button">
-                                        <md-icon>
-                                            <i class="material-icons">thumb_up</i>
-                                        </md-icon>
-                                    </md-button>
-                                    <md-button class="md-icon-button inline-button">
-                                        <md-icon>
-                                            <i class="material-icons">thumb_down</i>
-                                        </md-icon>
-                                    </md-button>
-                                </div>
+        <div style="height:90%">
+            <div ng-show="vm.facts.length === 0">
+                No data
+            </div>
 
-                                <!--<p>
-                                What does this mean to
-                            </p>-->
-                                <div>
-                                    <span class="inline-tag" ng-repeat="t in vm.currentFact.tags">{{t.tag_name}}</span>
-                                </div>
-                            </md-card>
-                        </div>
-                    </td>
-                    <td style="width:10%">
-                        <md-raised-button class="navigation-btn" ng-click="vm.nextTerm()">
-                            <md-icon>
-                                <i class="material-icons">navigate_next</i>
-                            </md-icon>
-                        </md-raised-button>
-                    </td>
-                </tr>
-            </table>
+            <div ng-repeat="f in vm.facts" ng-show="vm.facts.length > 0 && vm.currentFact == f" class="center-screen" style="width:100%">
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:30%; text-align:right">
+                            <button md-raised-button ng-click="vm.previousTerm()" ng-show="vm.index > 0" class="navigation-btn">
+                                <md-icon>
+                                    <i class="material-icons">navigate_before</i>
+                                </md-icon>
+                            </button>
+                        </td>
+                        <td style="width:40%">
+                            <div>
+                                <md-card class="flashCard" ng-class="{'anim-card-out': vm.currentFact !== f, 'anim-card-in': vm.currentFact === f}">
+                                    <h2>
+                                        <span style="text-align: right; float:left; width: 10%; display:table;">
+                                            #{{$index + 1}}
+                                        </span>
+                                        <span style="width: 80%; text-align: center; display:table;">
+                                            {{f.term_name}}
+                                        </span>
+                                        <span style="width: 10%; display:table;">&nbsp;</span>
+                                    </h2>
+                                    <p>
+                                        {{f.definition}}
+                                    </p>
+                                    <div>
+                                        <md-button class="md-icon-button inline-button md-fab vote-btn" ng-click="vm.upvote()" ng-class="{'upvote': vm.currentFact.up_tf === 0}">
+                                            <md-icon>
+                                                <i class="material-icons">thumb_up</i>
+                                            </md-icon>
+                                        </md-button>
+                                        <md-button class="md-icon-button inline-button md-fab vote-btn" ng-click="vm.downvote()" ng-class="{'downvote': vm.currentFact.up_tf === 1}">
+                                            <md-icon>
+                                                <i class="material-icons">thumb_down</i>
+                                            </md-icon>
+                                        </md-button>
+                                    </div>
+
+                                    <!--<p>
+                                        What does this mean to
+                                    </p>-->
+                                    <div>
+                                        <span class="inline-tag" ng-repeat="t in f.tags">{{t.tag_name}}</span>
+                                    </div>
+                                </md-card>
+                            </div>
+                        </td>
+                        <td style="width:30%">
+                            <button md-raised-button class="navigation-btn" ng-click="vm.nextTerm()" ng-show="vm.index < vm.facts.length-1">
+                                <md-icon>
+                                    <i class="material-icons">navigate_next</i>
+                                </md-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
-    
-
-
-    <!--<div class="md-whiteframe-1dp helpful">
-        <span>Was this helpful?</span>
+    <div class="md-whiteframe-1dp helpful">
+        <!--<span>Was this helpful?</span>
         <md-button class="md-icon-button">
             <md-icon>
                 <i class="material-icons">thumb_up</i>
@@ -108,7 +141,8 @@
             <md-icon>
                 <i class="material-icons">thumb_down</i>
             </md-icon>
-        </md-button>
-    </div>-->
+        </md-button>-->
+        <span class="bold" ng-show="vm.facts.length > 0">Viewing Card #{{vm.index + 1}}/{{vm.facts.length}}</span>
+    </div>
 </body>
 </html>
