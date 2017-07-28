@@ -17,23 +17,24 @@ namespace _3CHackathonAcumen.Controllers
 
         [HttpGet]
         [Route("api/values/upvote")]
-        public int upvote(int termId, int userId = 1)
+        public void upvote(int termId, int userId = 1)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
-                //vulnerable to sql injection :) 
-                return db.Execute(string.Format("EXEC upvote {0}, {1}", termId, userId));
+                string readSp = "upvote";
+                db.Query<int>(readSp, new { termId = termId, userId = userId }, commandType: CommandType.StoredProcedure);
             }
         }
 
         [HttpGet]
         [Route("api/values/downvote")]
-        public int downvote(int termId, string feedback, int userId = 1)
+        public void downvote(int termId, string feedback, int userId = 1)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
-                //vulnerable to sql injection :) 
-                return db.Execute(string.Format("EXEC downvote {0}, {1}, '{2}'", termId, userId, feedback.Replace("'","''")));
+                string readSp = "downvote";
+                db.Query<int>(readSp, new { termId = termId, userId = userId, feedback = feedback }, commandType: CommandType.StoredProcedure);
+                //return db.Execute(string.Format("EXEC downvote {0}, {1}, '{2}'", termId, userId, feedback.Replace("'","''")));
             }
         }
 
@@ -43,8 +44,8 @@ namespace _3CHackathonAcumen.Controllers
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString))
             {
-                //vulnerable to sql injection :) 
-                return db.Query<Term>("update terms set upvotes = upvotes - 1 where term_id =" + termId).ToList();
+                string readSp = "addview";
+                return db.Query<Term>(readSp, new { termId = termId }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }
