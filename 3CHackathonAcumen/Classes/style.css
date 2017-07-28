@@ -101,9 +101,62 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 
 }
 
+
 .search {
-    border: 1px solid lightgray;
+    width: 500px;
+    margin: 4px;
     box-shadow: 0px 4px 8px lightgrey;
+}
+
+.search_text {
+    width: 440px;
+    padding: 15px 0 15px 20px;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 52px;
+    margin-right: 0;
+    color: #96151d;
+    outline: none;
+    background: #FFFFFF;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #96151d;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #96151d;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #96151d;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #96151d;
+}
+
+.search_text:focus {
+    background: rgb(255, 255, 255);
+}
+
+.search_button {
+    border: 0 none;
+    background: #ffffff url("search_icon.png") center no-repeat;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
+}
+
+.landing-bkgd {
+    background: #96151d url("Assets/landing_page_bkgd.png") center no-repeat;
 }
 
 
