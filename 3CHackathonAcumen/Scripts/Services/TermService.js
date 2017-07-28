@@ -6,7 +6,8 @@
         return {
             upvote: upvote,
             downvote: downvote,
-            addView: addView
+            addView: addView,
+            getQuestion: getQuestion
         };
 
         function upvote(termId) {
@@ -47,5 +48,9 @@
             function addViewFailed(error) {
                 return console.log("XHR failed" + error.data.message);
             }
+        }
+
+        function getQuestion() {
+            return "A person or group of people responsible for investing a mutual, exchange-traded or closed-end fund's assets, implementing its investment strategy and managing day-to-day portfolio trading."
         }
     }]);

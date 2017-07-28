@@ -18,6 +18,10 @@
         vm.definition = "";
         vm.submitTerm = submitTerm;
         vm.cancel = cancel;
+        vm.getQuestion = "";
+        vm.getQ = getQ;
+        vm.getQ();
+
 
         vm.searchTerm = function () {
             vm.index = 0;
@@ -103,6 +107,13 @@
                 targetEvent: ev,
                 clickOutsideToClose: true
             });
+        }
+
+        function getQ() {
+            vm.getQuestion = TermService.getQuestion();
+            console.log(vm.getQuestion);
+            return vm.getQuestion;
+
         }
     }
 })();

@@ -21,7 +21,7 @@
             }
         }
         function getRandomQuestion() {
-            return $http.get(urlBase + "api/values/question/")
+            return $http.get(urlBase + "api/values/getQ/")
                 .then(getRandomQuestionComplete)
                 .catch(getRandomQuestionFailed);
 
