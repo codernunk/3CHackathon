@@ -80,5 +80,16 @@
         function quiz(ev) {
             return showDialog("QuizDialog.template.html", ev);
         }
+
+        function showDialog(template, ev) {
+            return $mdDialog.show({
+                controller: 'LandingPageController',
+                controllerAs: 'vm',
+                templateUrl: template,
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+            });
+        }
     }
 })();
