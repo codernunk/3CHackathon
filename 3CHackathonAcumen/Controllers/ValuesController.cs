@@ -36,6 +36,15 @@ namespace _3CHackathonAcumen.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/values/getDepartments")]
+        public List<string> getDepartments() {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString)) {
+                //get a random question from a database
+                return db.Query<string>("SELECT tag_name FROM TAGS WHERE TAG_TYPE = 2").ToList();
+            }
+        }
+
 
         [HttpGet]
         [Route("api/values/searchTerms")]

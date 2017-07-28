@@ -7,6 +7,7 @@
             upvote: upvote,
             downvote: downvote,
             addView: addView,
+            submitterm: submitterm,
             getQuestion: getQuestion
         };
 
@@ -64,4 +65,17 @@
                 return console.log("XHR failed" + error.data.message);
             }
         }
+        function submitterm(question, definition, department) {
+            return $http.get(urlBase + "api/values/submitterm/", { params: { question: question, definition: definition, department: department } })
+                .then(addViewComplete)
+                .catch(addViewFailed);
+
+            function addViewComplete(response) {
+                return response.data;
+            }
+
+            function addViewFailed(error) {
+                return console.log("XHR failed" + error.data.message);
+            }
+        }//submitterm
     }]);

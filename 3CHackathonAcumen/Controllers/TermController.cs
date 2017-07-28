@@ -48,5 +48,14 @@ namespace _3CHackathonAcumen.Controllers
                 return db.Query<Term>(readSp, new { termId = termId }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
+
+        [HttpGet]
+        [Route("api/values/submitterm")]
+        public void submitterm(string question, string definition, string department) {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["3CHackathon"].ConnectionString)) {
+                string readSp = "ins_term_basic";
+                db.Query(readSp, new { term_name = question, definition = definition, author = 1, dept = department }, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

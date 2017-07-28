@@ -18,7 +18,26 @@
                         <label>
                             Term
                         </label>
-                        <input type="text" ng-model="vm.question" placeholder="Enter your term..."/>
+                        <md-select ng-model="vm.selectedDepartment">
+                            <md-option>
+                                GIS
+                            </md-option>
+                            <md-option>
+                                FFS
+                            </md-option>
+                            <md-option>
+                                CTO
+                            </md-option>
+                            <md-option>
+                                RETAIL
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>
+                            Term
+                        </label>
+                        <input type="text" ng-model="vm.term" placeholder="Enter your term..." />
                     </md-input-container>
                     <md-input-container>
                         <label>
@@ -29,7 +48,7 @@
                 </md-content>
             </md-dialog-content>
             <md-dialog-actions layout="row">
-                <md-button ng-click="" class="md-primary md-raised">
+                <md-button ng-click="vm.submitTermComplete()" class="md-primary md-raised">
                     Submit
                 </md-button>
                 <span flex></span>

@@ -4,7 +4,8 @@
         var urlBase = "http://localhost:61103/";
 
         return {
-            getFacts: getFacts
+            getFacts: getFacts,
+            getDepartments: getDepartments
         };
 
         function getFacts(search) {
@@ -24,6 +25,20 @@
             return $http.get(urlBase + "api/values/getQ/")
                 .then(getRandomQuestionComplete)
                 .catch(getRandomQuestionFailed);
+
+            function getRandomQuestionComplete(response) {
+                return response.data;
+            }
+
+            function getRandomQuestionsFailed(error) {
+                return console.log("XHR failed" + error.data.message);
+            }
+        }
+
+        function getDepartments() {
+            return $http.get(urlBase + "api/values/getDepartments/")
+                .then(getRandomQuestionComplete)
+                .catch(getRandomQuestionsFailed);
 
             function getRandomQuestionComplete(response) {
                 return response.data;
