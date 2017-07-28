@@ -167,3 +167,13 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     animation-duration: .25s;
     position: relative;
 }
+
+.quizDialog{
+    max-width:100%;
+    width:500px;
+}
+
+.termDialog{
+    max-width:100%;
+    width:500px;
+}

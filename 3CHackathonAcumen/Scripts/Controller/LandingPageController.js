@@ -14,6 +14,10 @@
         vm.index = 0;
         vm.currentFact = null;
         vm.quiz = quiz;
+        vm.question = "";
+        vm.definition = "";
+        vm.submitTerm = submitTerm;
+        vm.cancel = cancel;
 
         vm.searchTerm = function () {
             vm.index = 0;
@@ -77,8 +81,17 @@
                 vm.currentFact = vm.facts[vm.index];
             }
         }
+
+        function cancel() {
+            $mdDialog.cancel();
+        }
+
         function quiz(ev) {
             return showDialog("QuizDialog.template.html", ev);
+        }
+
+        function submitTerm(ev) {
+            return showDialog("QuestionDialog.template.html", ev);
         }
 
         function showDialog(template, ev) {
